@@ -1,0 +1,30 @@
+<Window x:Class="SongsApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Songs" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- DataGrid с новыми колонками -->
+        <DataGrid x:Name="SongsGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"        Binding="{Binding song_id}" Width="50"/>
+                <DataGridTextColumn Header="Title"     Binding="{Binding title}" Width="*"/>
+                <DataGridTextColumn Header="Artist"    Binding="{Binding artist}" Width="*"/>
+                <DataGridTextColumn Header="Size (KB)" Binding="{Binding file_size_kb}" Width="100"/>
+                <DataGridTextColumn Header="Duration (s)" Binding="{Binding duration_sec}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Панель с двумя Label -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Label x:Name="LblTotalDuration" Content="Суммарная длительность: 0 сек" Margin="0,0,20,0"/>
+            <Label x:Name="LblTotalSize"      Content="Суммарный вес: 0 КБ"/>
+        </StackPanel>
+    </Grid>
+</Window>
